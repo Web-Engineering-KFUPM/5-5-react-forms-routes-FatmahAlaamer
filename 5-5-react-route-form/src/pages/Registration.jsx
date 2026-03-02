@@ -12,11 +12,19 @@ export default function Registration() {
 
     // alert(`Regiteration submit: ${email}`);
     const nextErrors = {};
-    if (!email.trim()) nextErrors.email = "Email is required";
-    else if (!(email.includes("@") && email.endsWith(".com")))
-      nextErrors.email = "Enter a valid email address";
-    if (!password.trim()) nextErrors.password = "Password is required";
-    if (!gender) nextErrors.gender = "Please select your gender";
+    if (!email.trim()) {
+      nextErrors.email = "Email is required";
+    } else if (!(email.includes("@") && email.endsWith(".com"))) {
+      nextErrors.email = 'Email must contain "@" and end with ".com"';
+    }
+
+    if (!password.trim()) {
+      nextErrors.password = "Password is required";
+    }
+
+    if (!gender) {
+      nextErrors.gender = "Please select your gender";
+    }
 
     setErrors(nextErrors);
 
@@ -32,7 +40,7 @@ export default function Registration() {
         Create your portal access. Your email will be used for course updates.
       </p>
 
-      <form onSubmit={handleSubmit} className="card form neon">
+      <form onSubmit={handleSubmit} className="card form neon"noValidate>
         <div className="form-row">
           <label htmlFor="email">Email</label>
           <input
@@ -57,6 +65,7 @@ export default function Registration() {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
+          {errors.password && <p className="error">{errors.password}</p>}
         </div>
 
         <fieldset className="form-row">
