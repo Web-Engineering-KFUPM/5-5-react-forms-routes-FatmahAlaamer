@@ -165,12 +165,14 @@ export default function App() {
       </nav>
 
       <main className="container">
-        {/*Routes*/}
-        <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/registration" element={<Registration />} />
-          <Route path="*" element={<h2>404 — Not Found</h2>} />
-      </main>
+  {/* Routes */}
+  <Routes>
+    <Route path="/" element={<Home />} />
+    <Route path="/about" element={<About />} />
+    <Route path="/registration" element={<Registration />} />
+    <Route path="*" element={<h2>404 — Not Found</h2>} />
+  </Routes>
+</main>
 
       <footer className="footer">
         <span>© {new Date().getFullYear()} React Student Portal</span>
